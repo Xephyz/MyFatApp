@@ -7,17 +7,17 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/john"
+        android:id="@+id/butMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Heya!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentTime" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCurrentTime" />
 
     <TextView
-        android:id="@+id/currentTime"
+        android:id="@+id/txtCurrentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -26,10 +26,10 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/imgWelcomeIcon" />
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/txtWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -40,37 +40,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/welcomeIcon"
+        android:id="@+id/imgWelcomeIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome"
+        app:layout_constraintTop_toBottomOf="@+id/txtWelcome"
         android:src="@mipmap/ic_launcher" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/butResetTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Reset time"
-        app:layout_constraintEnd_toStartOf="@+id/john"
+        app:layout_constraintEnd_toStartOf="@+id/butMain"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentTime" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCurrentTime" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/butLinkify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Linkify text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/john"
-        app:layout_constraintTop_toBottomOf="@+id/currentTime" />
+        app:layout_constraintStart_toEndOf="@+id/butMain"
+        app:layout_constraintTop_toBottomOf="@+id/txtCurrentTime" />
 
     <TextView
-        android:id="@+id/changeMe"
+        android:id="@+id/txtChangeMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -78,10 +78,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/john" />
+        app:layout_constraintTop_toBottomOf="@+id/butMain" />
 
     <EditText
-        android:id="@+id/urlText"
+        android:id="@+id/inputTxtUrl"
         android:layout_width="265dp"
         android:layout_height="0dp"
         android:layout_marginTop="70dp"
@@ -91,7 +91,7 @@
         android:text="Type URL here..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeMe" />
+        app:layout_constraintTop_toBottomOf="@+id/txtChangeMe" />
 
     <WebView
         android:id="@+id/webView"
@@ -102,17 +102,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/urlText"
+        app:layout_constraintTop_toBottomOf="@+id/inputTxtUrl"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/urlOk"
+        android:id="@+id/butUrlOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@android:string/ok"
-        app:layout_constraintBottom_toBottomOf="@+id/urlText"
+        app:layout_constraintBottom_toBottomOf="@+id/inputTxtUrl"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/urlText"
-        app:layout_constraintTop_toTopOf="@+id/urlText" />
+        app:layout_constraintStart_toEndOf="@+id/inputTxtUrl"
+        app:layout_constraintTop_toTopOf="@+id/inputTxtUrl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
