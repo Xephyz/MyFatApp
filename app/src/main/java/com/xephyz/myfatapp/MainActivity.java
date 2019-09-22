@@ -19,7 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-	EditText inpSomeText, inpNum;
+	EditText inpSomeText, inpNum, inpEmail;
 	Button butCallNum, butSMS, butSendEmail, butShareApp, butSettings, butWebIntents;
 
 	@Override
@@ -34,9 +34,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 		inpNum = new EditText(this);
 		inpNum.setHint("Type phonenumber here... If ya feel like it");
-		inpNum.setText("11223344"); /** TODO: REMOVE THIS WHEN NOT TESTING!!!**/
+		// inpNum.setText("11223344"); /** TODO: REMOVE THIS WHEN NOT TESTING!!!**/
 		inpNum.setInputType(InputType.TYPE_CLASS_PHONE);
 		tl.addView(inpNum);
+
+		inpEmail = new EditText(this);
+		inpEmail.setHint("Type email address here (optional)");
+		inpEmail.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+		tl.addView(inpEmail);
 
 		butCallNum = new Button(this);
 		butCallNum.setText("Call number");
@@ -94,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	public void onClick(View v) {
 		String text = inpSomeText.getText().toString();
 		String num = inpNum.getText().toString();
+		String email = inpEmail.getText().toString();
 
 		inpNum.setError(null);
 		if (num.length() == 0 && v == butCallNum) {
@@ -104,8 +110,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 		try {
 			if (v == butCallNum) {
-				Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + num));
-				startActivity(intent);
+				Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + num));
+				if (callIntent.resolveActivity(getPackageManager()) != null) {
+					startActivity(callIntent);
+				}
 			}
 			else if (v == butSMS) {
 				text = text + createPhoneInfo();
@@ -118,6 +126,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				if (sendIntent.resolveActivity(getPackageManager()) != null) {
 					startActivity(sendIntent);
 				}
+			}
+			else if (v == butSendEmail) {
+				text = text + "\n\nPhone & App info:" + createPhoneInfo();
+				Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+
+				emailIntent.setData(Uri.parse("mailto:"));	// only mail apps should handle this
+
+				if (!email.isEmpty()) {
+					emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+					emailIntent.putExtra(Intent.EXTRA_TEXT, text);
+				} else {
+					emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{text});
+					emailIntent.putExtra(Intent.EXTRA_TEXT, createPhoneInfo());
+				}
+				emailIntent.putExtra(Intent.EXTRA_SUBJECT, num);
+				emailIntent.putExtra(Intent.EXTRA_CC, new String[]{"xephyzone@gmail.com"});
+				if (emailIntent.resolveActivity(getPackageManager()) != null)
+					startActivity(emailIntent);
+
 			}
 
 		} catch (Exception e) {
