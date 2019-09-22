@@ -1,3 +1,4 @@
+# Defaults from .gitignore template "Android"
 *.iml
 .gradle
 /local.properties
@@ -12,3 +13,6 @@
 /captures
 .externalNativeBuild
 .cxx
+
+# "Self added"
+
