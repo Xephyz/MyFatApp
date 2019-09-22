@@ -20,7 +20,7 @@
         android:id="@+id/currentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="18:19"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.498"
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Button 2"
+        android:text="Reset time"
         app:layout_constraintEnd_toStartOf="@+id/john"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentTime" />
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Button 3"
+        android:text="Linkify text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/john"
         app:layout_constraintTop_toBottomOf="@+id/currentTime" />
