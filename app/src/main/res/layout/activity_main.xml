@@ -7,14 +7,16 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/butMain"
-        android:layout_width="wrap_content"
+        android:id="@+id/b1Main"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Heya!"
-        app:layout_constraintEnd_toStartOf="@+id/butLinkify"
+        android:layout_marginEnd="8dp"
+        android:text="@string/main_b_main"
+        app:layout_constraintEnd_toStartOf="@+id/b3Linkify"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/butResetTime"
+        app:layout_constraintStart_toEndOf="@+id/b2ResetTime"
         app:layout_constraintTop_toBottomOf="@+id/txtCurrentTime" />
 
     <TextView
@@ -22,102 +24,92 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="18:19"
+        android:text="@string/main_txt_time"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgWelcomeIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/imgWelcome" />
 
     <TextView
         android:id="@+id/txtWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Welcome!"
+        android:text="@string/main_txt_welcome"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgWelcomeIcon"
+        android:id="@+id/imgWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:contentDescription="Just a default image thingy..."
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
 
     <Button
-        android:id="@+id/butResetTime"
-        android:layout_width="wrap_content"
+        android:id="@+id/b2ResetTime"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Reset time"
-        app:layout_constraintBaseline_toBaselineOf="@+id/butMain"
-        app:layout_constraintEnd_toStartOf="@+id/butMain"
+        android:text="@string/main_b_reTime"
+        app:layout_constraintBaseline_toBaselineOf="@+id/b1Main"
+        app:layout_constraintEnd_toStartOf="@+id/b1Main"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/butLinkify"
-        android:layout_width="wrap_content"
+        android:id="@+id/b3Linkify"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="Linkify text"
-        app:layout_constraintBaseline_toBaselineOf="@+id/butMain"
+        android:text="@string/main_b_linkify"
+        app:layout_constraintBaseline_toBaselineOf="@+id/b1Main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/butMain" />
+        app:layout_constraintStart_toEndOf="@+id/b1Main" />
 
     <TextView
         android:id="@+id/txtChangeMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Click a button and i'll change!"
+        android:text="@string/main_txt_changeMe"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butMain" />
+        app:layout_constraintTop_toBottomOf="@+id/b1Main" />
 
-    <EditText
-        android:id="@+id/inputTxtUrl"
-        android:layout_width="265dp"
-        android:layout_height="0dp"
+    <Button
+        android:id="@+id/b4WebAct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Type URL here..."
-        app:layout_constraintEnd_toStartOf="@+id/butUrlOk"
+        android:layout_marginEnd="8dp"
+        android:onClick="gotoWebview"
+        android:text="@string/main_b_webAct"
+        app:layout_constraintEnd_toStartOf="@+id/b5Intents"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtChangeMe" />
 
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTxtUrl"
-        app:layout_constraintVertical_bias="1.0" />
-
     <Button
-        android:id="@+id/butUrlOk"
-        android:layout_width="wrap_content"
+        android:id="@+id/b5Intents"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        android:text="@android:string/ok"
-        app:layout_constraintBaseline_toBaselineOf="@+id/inputTxtUrl"
+        android:text="@string/main_b_intents"
+        app:layout_constraintBaseline_toBaselineOf="@+id/b4WebAct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/inputTxtUrl" />
+        app:layout_constraintStart_toEndOf="@+id/b4WebAct" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
