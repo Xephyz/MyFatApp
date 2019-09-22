@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TableLayout tl = new TableLayout(this);
 
 		inpSomeText = new EditText(this);
-		inpSomeText.setHint("Type some text here");
+		inpSomeText.setText("Replace me!");
 		tl.addView(inpSomeText);
 
 		inpNum = new EditText(this);
@@ -87,5 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+		String text = inpSomeText.getText().toString();
+		String num = inpNum.getText().toString();
+
+		
     }
 }
