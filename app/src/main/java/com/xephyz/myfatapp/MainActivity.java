@@ -90,7 +90,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == butResetTime) {
             txtCurrentTime.setText("The time is:\n" + new Date());
         } else if (v == butLinkifyTxt) {
-            txtChangeMe.setText("Linkify er cool: Mit telefonnummer er 20339944,\nmin e-post er xephyzone@gmail.com og\njeg har ikke en hjemmeside... Men jeg kan godt lide https://reddit.com.");
+            txtChangeMe.setText("Linkify er cool: Mit telefonnummer er 20339944,\n" +
+                                "min e-post er xephyzone@gmail.com og\n" +
+                                "jeg har ikke en hjemmeside... Men jeg kan godt lide https://lambda.wtf.");
             Linkify.addLinks(txtChangeMe, Linkify.ALL);
         }
         // else if (v == butUrlOk) {
