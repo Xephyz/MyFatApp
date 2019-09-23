@@ -18,7 +18,6 @@ import android.widget.Toast;
 public class DisplayIntentsActivity extends AppCompatActivity {
 	// Variable declarations
 	EditText inpMessage, inpNumber, inpEmail;
-	Button bCallNum, bSendSMS, bSendEmail, bShareApp, bSettings, bWebIntents;
 	TextView txtLinkify;
 
 	@Override
