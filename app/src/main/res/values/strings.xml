@@ -11,4 +11,9 @@
     <string name="web_txt_url">Type a url here...</string>
     <string name="web_b_urlOk">Go</string>
     <string name="web_txt_urlDefault">https://javabog.dk/</string>
+    <string name="int_txt_messageHint">Type some message here!</string>
+    <string name="int_txt_numberHint">11223344</string>
+    <string name="int_txt_emailHint">example@somemail.wtf</string>
+    <string name="int_b_callNum">Call number</string>
+    <string name="int_b_sendSMS">Send SMS</string>
 </resources>
