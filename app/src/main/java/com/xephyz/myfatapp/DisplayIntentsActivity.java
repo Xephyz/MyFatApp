@@ -11,12 +11,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DisplayIntentsActivity extends AppCompatActivity {
 	// Variable declarations
 	EditText inpMessage, inpNumber, inpEmail;
 	Button bCallNum, bSendSMS, bSendEmail, bShareApp, bSettings, bWebIntents;
+	TextView txtLinkify;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		inpMessage = findViewById(R.id.int_inputText);
 		inpNumber = findViewById(R.id.int_inputNum);
 		inpEmail = findViewById(R.id.int_inputEmail);
+		txtLinkify = findViewById(R.id.int_txt_textLinkified);
 	}
 
 	public String createPhoneInfo() throws Exception {
@@ -88,6 +91,34 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 
 			if (sendSMS.resolveActivity(getPackageManager()) != null)
 				startActivity(sendSMS);
+		}
+	}
+
+	public void sendEmail(View view) {
+		String text = inpMessage.getText().toString();
+		String num = inpNumber.getText().toString();
+		String email = inpEmail.getText().toString();
+
+		try {
+			text = text + "\n\nPhone & App info:" + createPhoneInfo();
+			Intent sendEmail = new Intent(Intent.ACTION_SENDTO);
+			sendEmail.setData(Uri.parse("mailto:"));	// Only mail apps should handle this
+
+			if (!email.isEmpty()) {
+				sendEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+			} else {
+				sendEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{"test@lambda.wtf"});
+			}
+			sendEmail.putExtra(Intent.EXTRA_TEXT, text);
+			sendEmail.putExtra(Intent.EXTRA_SUBJECT, "Something about this number: " + num);
+			sendEmail.putExtra(Intent.EXTRA_CC, new String[]{"test@lambda.wtf", "memes@gmail.com"});
+
+			if (sendEmail.resolveActivity(getPackageManager()) != null)
+				startActivity(sendEmail);
+
+		} catch (Exception e) {
+			Toast.makeText(this, "This phone lacks a function:\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
 		}
 	}
 }
