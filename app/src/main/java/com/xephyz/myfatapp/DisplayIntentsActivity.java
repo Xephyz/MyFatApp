@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +18,6 @@ import android.widget.Toast;
 public class DisplayIntentsActivity extends AppCompatActivity {
 	// Variable declarations
 	EditText inpMessage, inpNumber, inpEmail;
-	Button bCallNum, bSendSMS, bSendEmail, bShareApp, bSettings, bWebIntents;
 	TextView txtLinkify;
 
 	@Override
@@ -29,6 +29,12 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		inpNumber = findViewById(R.id.int_inputNum);
 		inpEmail = findViewById(R.id.int_inputEmail);
 		txtLinkify = findViewById(R.id.int_txt_textLinkified);
+
+		txtLinkify.setText("You can use Linkify to put intents into a TextView.\n" +
+						   "phonenumber: 11223344,\n" +
+						   "e-mail: example@lambdamail.wtf,\n" +
+						   "website: https://lambda.wtf.");
+		Linkify.addLinks(txtLinkify, Linkify.ALL);
 	}
 
 	public String createPhoneInfo() throws Exception {
@@ -36,14 +42,6 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		return "\nProgram: " + getPackageName() + " version " + pi.versionName
 				+ "\nPhone model: " + Build.MODEL + "\n" + Build.PRODUCT
 				+ "\nAndroid version " + Build.VERSION.RELEASE + "\nsdk: " + Build.VERSION.SDK_INT;
-	}
-
-	public String[] getInputFields() {
-		return new String[]{
-				inpMessage.getText().toString(),
-				inpNumber.getText().toString(),
-				inpEmail.getText().toString()
-		};
 	}
 
 	public boolean isNotNumberFieldEmpty() {
@@ -101,24 +99,35 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 
 		try {
 			text = text + "\n\nPhone & App info:" + createPhoneInfo();
-			Intent sendEmail = new Intent(Intent.ACTION_SENDTO);
-			sendEmail.setData(Uri.parse("mailto:"));	// Only mail apps should handle this
-
-			if (!email.isEmpty()) {
-				sendEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
-			} else {
-				sendEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{"test@lambda.wtf"});
-			}
-			sendEmail.putExtra(Intent.EXTRA_TEXT, text);
-			sendEmail.putExtra(Intent.EXTRA_SUBJECT, "Something about this number: " + num);
-			sendEmail.putExtra(Intent.EXTRA_CC, new String[]{"test@lambda.wtf", "memes@gmail.com"});
-
-			if (sendEmail.resolveActivity(getPackageManager()) != null)
-				startActivity(sendEmail);
-
 		} catch (Exception e) {
 			Toast.makeText(this, "This phone lacks a function:\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
+			return;
 		}
+
+		Intent sendEmail = new Intent(Intent.ACTION_SENDTO);
+		sendEmail.setData(Uri.parse("mailto:"));	// Only mail apps should handle this
+
+		if (!email.isEmpty()) {
+			sendEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+		} else {
+			sendEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{"test@lambda.wtf"});
+		}
+
+		sendEmail.putExtra(Intent.EXTRA_TEXT, text);
+		if (inpMessage.getText().toString().isEmpty())
+			sendEmail.putExtra(Intent.EXTRA_TEXT, "You didn't even type a message... " +
+													"So here is a default template message thingy!" + text);
+
+		if (!isInputFieldEmpty(inpNumber)) {
+			sendEmail.putExtra(Intent.EXTRA_SUBJECT, "Something about this number: " + num);
+		} else {
+			sendEmail.putExtra(Intent.EXTRA_SUBJECT, "Uhm... something something subject...?");
+		}
+
+		sendEmail.putExtra(Intent.EXTRA_CC, new String[]{"test@lambda.wtf"});
+
+		if (sendEmail.resolveActivity(getPackageManager()) != null)
+			startActivity(sendEmail);
 	}
 }
