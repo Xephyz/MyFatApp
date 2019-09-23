@@ -43,16 +43,16 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		};
 	}
 
-	public boolean isNumberEmpty() {
+	public boolean isNotNumberFieldEmpty() {
 		String num = inpNumber.getText().toString();
 
 		inpNumber.setError(null);
 		if (num.isEmpty()) {
 			inpNumber.setError("Type a valid phonenumber");
 			Toast.makeText(this, "Type a valid phonenumber", Toast.LENGTH_LONG).show();
-			return true;
-		} else {
 			return false;
+		} else {
+			return true;
 		}
 	}
 
@@ -65,7 +65,7 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 	public void callNumber(View view) {
 		String num = inpNumber.getText().toString();
 
-		if (!isNumberEmpty()) {
+		if (isNotNumberFieldEmpty()) {
 			Intent callNum = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + num));
 			if (callNum.resolveActivity(getPackageManager()) != null)
 				startActivity(callNum);
@@ -76,7 +76,7 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		String num = inpNumber.getText().toString();
 		String msg = inpMessage.getText().toString();
 
-		if (!isNumberEmpty()) {
+		if (isNotNumberFieldEmpty()) {
 			Intent sendSMS = new Intent(Intent.ACTION_SENDTO);
 			sendSMS.setData(Uri.parse("smsto:" + num));
 			// sendSMS.putExtra("address", num);
