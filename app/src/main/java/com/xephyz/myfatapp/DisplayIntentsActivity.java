@@ -113,9 +113,19 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		} else {
 			sendEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{"test@lambda.wtf"});
 		}
+
 		sendEmail.putExtra(Intent.EXTRA_TEXT, text);
-		sendEmail.putExtra(Intent.EXTRA_SUBJECT, "Something about this number: " + num);
-		sendEmail.putExtra(Intent.EXTRA_CC, new String[]{"test@lambda.wtf", "memes@gmail.com"});
+		if (inpMessage.getText().toString().isEmpty())
+			sendEmail.putExtra(Intent.EXTRA_TEXT, "You didn't even type a message... " +
+													"So here is a default template message thingy!" + text);
+
+		if (!isInputFieldEmpty(inpNumber)) {
+			sendEmail.putExtra(Intent.EXTRA_SUBJECT, "Something about this number: " + num);
+		} else {
+			sendEmail.putExtra(Intent.EXTRA_SUBJECT, "Uhm... something something subject...?");
+		}
+
+		sendEmail.putExtra(Intent.EXTRA_CC, new String[]{"test@lambda.wtf"});
 
 		if (sendEmail.resolveActivity(getPackageManager()) != null)
 			startActivity(sendEmail);
