@@ -44,14 +44,6 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 				+ "\nAndroid version " + Build.VERSION.RELEASE + "\nsdk: " + Build.VERSION.SDK_INT;
 	}
 
-	public String[] getInputFields() {
-		return new String[]{
-				inpMessage.getText().toString(),
-				inpNumber.getText().toString(),
-				inpEmail.getText().toString()
-		};
-	}
-
 	public boolean isNotNumberFieldEmpty() {
 		String num = inpNumber.getText().toString();
 
