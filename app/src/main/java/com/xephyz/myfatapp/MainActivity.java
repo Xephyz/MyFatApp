@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView txtWelcome, txtCurrentTime, txtChangeMe;
     ImageView imgWelcomeIcon;
-    Button butMain, butResetTime, butLinkifyTxt, b4Webview, b5Intents;
+    Button butMain, butResetTime, butLinkifyTxt;
     // Button butUrlOk;
     // EditText inputTxtUrl;
     // WebView webView;
@@ -64,11 +64,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * Called when user taps 4th button labeled "Webviews!"
+     * Called when user taps 4th button labeled "Webview!"
      * @param view
      */
     public void gotoWebview(View view) {
         Intent intent = new Intent(this, DisplayWebviewActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Called when user taps 5th button labeled "Intents!"
+     * @param view
+     */
+    public void gotoIntentsView(View view) {
+        Intent intent = new Intent(this, DisplayIntentsActivity.class);
         startActivity(intent);
     }
 
