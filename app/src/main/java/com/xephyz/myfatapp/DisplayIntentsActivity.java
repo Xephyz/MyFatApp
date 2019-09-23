@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,12 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		inpNumber = findViewById(R.id.int_inputNum);
 		inpEmail = findViewById(R.id.int_inputEmail);
 		txtLinkify = findViewById(R.id.int_txt_textLinkified);
+
+		txtLinkify.setText("You can use Linkify to put intents into a TextView.\n" +
+						   "phonenumber: 11223344,\n" +
+						   "e-mail: example@lambdamail.wtf,\n" +
+						   "website: https://lambda.wtf.");
+		Linkify.addLinks(txtLinkify, Linkify.ALL);
 	}
 
 	public String createPhoneInfo() throws Exception {
