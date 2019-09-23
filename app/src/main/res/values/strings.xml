@@ -16,4 +16,9 @@
     <string name="int_txt_emailHint">example@somemail.wtf</string>
     <string name="int_b_callNum">Call number</string>
     <string name="int_b_sendSMS">Send SMS</string>
+    <string name="int_b_sendEmail">Send E-mail</string>
+    <string name="int_b_shareApp">Share this app</string>
+    <string name="int_b_settings">Settings</string>
+    <string name="int_b_webIntent">Open Website (About Intents)</string>
+    <string name="int_txt_textLinkified">Linkify text placeholder</string>
 </resources>
