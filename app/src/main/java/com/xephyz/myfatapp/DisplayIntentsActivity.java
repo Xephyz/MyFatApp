@@ -130,4 +130,8 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		if (sendEmail.resolveActivity(getPackageManager()) != null)
 			startActivity(sendEmail);
 	}
+
+	public void notImplementedYet(View view) {
+		Toast.makeText(this, "Atleast i've implemented a toast! ;)", Toast.LENGTH_SHORT).show();
+	}
 }
