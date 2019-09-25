@@ -19,9 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView txtWelcome, txtCurrentTime, txtChangeMe;
     ImageView imgWelcomeIcon;
     Button butMain, butResetTime, butLinkifyTxt;
-    // Button butUrlOk;
-    // EditText inputTxtUrl;
-    // WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // ImageViews
         imgWelcomeIcon = findViewById(R.id.imgWelcome);
 
-        // EditTexts
-        // inputTxtUrl = findViewById(R.id.inputTxtUrl);
-
-        // WebViews
-        // webView = findViewById(R.id.webView);
-
         butMain.setText("Tap me!");
         butResetTime.setText("Reset time");
-        // inputTxtUrl.setText("https://");
-        // webView.loadUrl("https://javabog.dk");
 
         String timeText = "The time is:\n" + new Date();
         txtCurrentTime.setText(timeText);
@@ -60,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         butResetTime.setOnClickListener(this);
         butLinkifyTxt.setOnClickListener(this);
         txtCurrentTime.setOnClickListener(this);
-        // butUrlOk.setOnClickListener(this);
     }
 
     /**
