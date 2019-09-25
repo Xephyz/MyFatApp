@@ -134,6 +134,11 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 			startActivity(sendEmail);
 	}
 
+	public void shareApp(View view) {
+		System.out.println("Lol! Someone tried to share this app! xd");
+		Toast.makeText(this, "Sorry, this app is not on the Play Store... Yet ;)", Toast.LENGTH_SHORT).show();
+	}
+
 	public void notImplementedYet(View view) {
 		Toast.makeText(this, "Atleast i've implemented a toast! ;)", Toast.LENGTH_SHORT).show();
 	}
