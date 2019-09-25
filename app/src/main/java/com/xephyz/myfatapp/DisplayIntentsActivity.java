@@ -31,9 +31,9 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		txtLinkify = findViewById(R.id.int_txt_textLinkified);
 
 		txtLinkify.setText("You can use Linkify to put intents into a TextView.\n" +
-						   "phonenumber: 11223344,\n" +
+						   "phonenumber: 87847989,\n" +
 						   "e-mail: example@lambdamail.wtf,\n" +
-						   "website: https://lambda.wtf.");
+						   "website: https://c.lambda.wtf.");
 		Linkify.addLinks(txtLinkify, Linkify.ALL);
 	}
 
@@ -114,10 +114,13 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 			sendEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{"test@lambda.wtf"});
 		}
 
-		sendEmail.putExtra(Intent.EXTRA_TEXT, text);
-		if (inpMessage.getText().toString().isEmpty())
+		if (inpMessage.getText().toString().isEmpty()) {
+			sendEmail.putExtra(Intent.EXTRA_TEXT, text);
+		} else {
 			sendEmail.putExtra(Intent.EXTRA_TEXT, "You didn't even type a message... " +
-													"So here is a default template message thingy!" + text);
+					"So here is a default template message thingy!" + text);
+		}
+
 
 		if (!isInputFieldEmpty(inpNumber)) {
 			sendEmail.putExtra(Intent.EXTRA_SUBJECT, "Something about this number: " + num);
@@ -129,6 +132,11 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 
 		if (sendEmail.resolveActivity(getPackageManager()) != null)
 			startActivity(sendEmail);
+	}
+
+	public void shareApp(View view) {
+		System.out.println("Lol! Someone tried to share this app! xd");
+		Toast.makeText(this, "Sorry, this app is not on the Play Store... Yet ;)", Toast.LENGTH_SHORT).show();
 	}
 
 	public void notImplementedYet(View view) {
