@@ -19,9 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView txtWelcome, txtCurrentTime, txtChangeMe;
     ImageView imgWelcomeIcon;
     Button butMain, butResetTime, butLinkifyTxt;
-    // Button butUrlOk;
-    // EditText inputTxtUrl;
-    // WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // ImageViews
         imgWelcomeIcon = findViewById(R.id.imgWelcome);
 
-        // EditTexts
-        // inputTxtUrl = findViewById(R.id.inputTxtUrl);
-
-        // WebViews
-        // webView = findViewById(R.id.webView);
-
         butMain.setText("Tap me!");
         butResetTime.setText("Reset time");
-        // inputTxtUrl.setText("https://");
-        // webView.loadUrl("https://javabog.dk");
 
         String timeText = "The time is:\n" + new Date();
         txtCurrentTime.setText(timeText);
@@ -60,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         butResetTime.setOnClickListener(this);
         butLinkifyTxt.setOnClickListener(this);
         txtCurrentTime.setOnClickListener(this);
-        // butUrlOk.setOnClickListener(this);
     }
 
     /**
@@ -90,11 +78,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == butResetTime) {
             txtCurrentTime.setText("The time is:\n" + new Date());
         } else if (v == butLinkifyTxt) {
-            txtChangeMe.setText("Linkify er cool: Mit telefonnummer er 20339944,\nmin e-post er xephyzone@gmail.com og\njeg har ikke en hjemmeside... Men jeg kan godt lide https://reddit.com.");
+            txtChangeMe.setText("Linkify is actually pretty cool:\n" +
+                    "My number is 20339944,\n" +
+                    "My email is xephyzone@gmail.com\n" +
+                    "I don't have a website, but it like: https://c.lambda.wtf.");
             Linkify.addLinks(txtChangeMe, Linkify.ALL);
         }
-        // else if (v == butUrlOk) {
-        //     webView.loadUrl(inputTxtUrl.getText().toString());
-        // }
     }
 }

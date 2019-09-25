@@ -23,7 +23,7 @@ public class DisplayWebviewActivity extends AppCompatActivity {
 		txtUrl = findViewById(R.id.web_txt_url);
 		bUrlGo = findViewById(R.id.web_b_urlGo);
 		webView = findViewById(R.id.web_webview);
-		webView.loadUrl("https://javabog.dk");
+		webView.loadUrl("https://c.lambda.wtf");
 	}
 
 	public void loadUrl(View view) {
