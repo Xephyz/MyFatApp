@@ -31,9 +31,9 @@ public class DisplayIntentsActivity extends AppCompatActivity {
 		txtLinkify = findViewById(R.id.int_txt_textLinkified);
 
 		txtLinkify.setText("You can use Linkify to put intents into a TextView.\n" +
-						   "phonenumber: 11223344,\n" +
+						   "phonenumber: 87847989,\n" +
 						   "e-mail: example@lambdamail.wtf,\n" +
-						   "website: https://lambda.wtf.");
+						   "website: https://c.lambda.wtf.");
 		Linkify.addLinks(txtLinkify, Linkify.ALL);
 	}
 
