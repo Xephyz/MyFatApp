@@ -1,0 +1,27 @@
+- Er der nogle fordele og ulemper med programmatisk hhv. deklarativt layout?
+(Selvfølgelig er der det, ellers ville det jo ikke være noget vi skulle svare på :)
+
+## Deklarativt layout
+# Fordele
+Det er meget nemmere at hurtigt lave et layout som er detaljeret (Specielt med værktøjer som Android Studio som gør det endnu nemmere at arbejde med '.xml' filer når det gælder layout design).
+Derudover gør det deklarative layout at man kender det layout man har på forhånd i detaljer, så man kan muligvis optimere app'en udfra det.
+
+# Ulemper
+"Redundans", dvs. man har mange af ens layout "objekter/views" flere steder. Altså udover at definere hvor de skal være via en xml fil, skal man derefter i java delen oprette objekter som passer til dem man har defineret i xml, så skal man "finde" dem gennem 'findViewById' metoden og først derefter kan man udføre forskellige funktioner med/på dem.
+
+
+## Programmatisk layout
+# Fordele
+Ens layout kan gøres meget dynamisk, dvs. Man f.eks. kan bygge udseendet ud fra noget data man henter fra en server.
+Man kan også meget hurtigt lave et simpelt layout programmatisk.
+Man har samlet ens layout og funktionalitet, hvilket kan hjælpe på at "debugge" ens arbejde uden at skulle kigge for meget rundt.
+
+# Ulemper
+Det er sværere at visualisere udseendet af ens app kun udfra hvordan forskellige Views bliver oprettet og sat sammen programmatisk.
+
+
+- Står setContentView() øverst eller nederst når man bruger deklarativt (XML) layout? Hvorfor?
+Det står øverst, fordi man skal indlæse et predefineret layout fra ens XML fil før man kan begynde at finde de forskellige views via findViewById funktionen.
+
+- Står setContentView() øverst eller nederst når man bruger programmatisk (Java) layout? Hvorfor?
+Det står nederst, fordi man først skal oprette de forskellige dele (views) som man vil have i ens endelige layout.
